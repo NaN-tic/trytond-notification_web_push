@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<tree>
+    <field name="application" />
+    <field name="user" />
+    <field name="service" />
+    <field name="promotion" />
+    <field name="reminder" />
+    <field name="changed_at" widget="date" />
+    <field name="changed_at" widget="time" />
+</tree>

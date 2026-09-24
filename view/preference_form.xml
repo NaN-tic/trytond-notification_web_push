@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<form>
+    <label name="application" />
+    <field name="application" />
+    <label name="user" />
+    <field name="user" />
+    <label name="service" />
+    <field name="service" />
+    <label name="promotion" />
+    <field name="promotion" />
+    <label name="reminder" />
+    <field name="reminder" />
+    <label name="changed_at" />
+    <field name="changed_at" />
+</form>

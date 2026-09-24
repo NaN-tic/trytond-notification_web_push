@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<tree>
+    <field name="application" />
+    <field name="user" />
+    <field name="device_type" />
+    <field name="operating_system" />
+    <field name="browser" />
+    <field name="device_model" />
+    <field name="device" />
+    <field name="active" />
+</tree>

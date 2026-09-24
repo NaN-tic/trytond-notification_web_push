@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<form>
+    <label name="message" />
+    <field name="message" />
+    <label name="subscription" />
+    <field name="subscription" />
+    <label name="state" />
+    <field name="state" />
+    <label name="attempts" />
+    <field name="attempts" />
+    <label name="next_attempt" />
+    <field name="next_attempt" />
+    <label name="accepted_at" />
+    <field name="accepted_at" />
+    <label name="error" />
+    <field name="error" />
+</form>

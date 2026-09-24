@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<form>
+    <label name="application" />
+    <field name="application" />
+    <label name="user" />
+    <field name="user" />
+    <label name="scheduled_message" />
+    <field name="scheduled_message" />
+    <label name="category" />
+    <field name="category" />
+    <label name="title" />
+    <field name="title" />
+    <label name="body" />
+    <field name="body" colspan="3" />
+    <label name="path" />
+    <field name="path" />
+    <label name="create_date" />
+    <field name="create_date" />
+    <label name="read_at" />
+    <field name="read_at" />
+    <label name="expires_at" />
+    <field name="expires_at" />
+    <label name="deliveries" />
+    <field name="deliveries" colspan="3" />
+</form>

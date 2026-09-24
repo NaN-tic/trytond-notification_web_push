@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<form>
+    <label name="name" />
+    <field name="name" />
+    <label name="code" />
+    <field name="code" />
+    <label name="company" />
+    <field name="company" />
+    <label name="origin" />
+    <field name="origin" />
+    <label name="base_path" />
+    <field name="base_path" />
+    <label name="public_key" />
+    <field name="public_key" />
+    <label name="private_key_file" />
+    <field name="private_key_file" />
+    <field name="private_key_filename" invisible="1" />
+    <newline/>
+    <label name="subject" />
+    <field name="subject" />
+    <label name="push_enabled" />
+    <field name="push_enabled" />
+    <label name="active" />
+    <field name="active" />
+</form>

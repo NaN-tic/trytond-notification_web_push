@@ -1,0 +1,618 @@
+#
+msgid ""
+msgstr "Content-Type: text/plain; charset=utf-8\n"
+
+msgctxt "model:ir.model.button,string:button_open_messages"
+msgid "Open Messages"
+msgstr "Abrir mensajes"
+
+msgctxt "view:notification.web.scheduled_message:"
+msgid "Open Messages"
+msgstr "Abrir mensajes"
+
+msgctxt "field:notification.web.application,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:notification.web.application,code:"
+msgid "Code"
+msgstr "Código"
+
+msgctxt "field:notification.web.application,company:"
+msgid "Company"
+msgstr "Empresa"
+
+msgctxt "field:notification.web.application,origin:"
+msgid "HTTPS Origin"
+msgstr "Origen HTTPS"
+
+msgctxt "field:notification.web.application,base_path:"
+msgid "Application Path"
+msgstr "Ruta de la aplicación"
+
+msgctxt "field:notification.web.application,public_key:"
+msgid "VAPID Public Key"
+msgstr "Clave pública VAPID"
+
+msgctxt "field:notification.web.application,subject:"
+msgid "VAPID Contact"
+msgstr "Contacto VAPID"
+
+msgctxt "field:notification.web.application,push_enabled:"
+msgid "Enable Push Sending"
+msgstr "Activar envío push"
+
+msgctxt "field:notification.web.template,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:notification.web.template,category:"
+msgid "Category"
+msgstr "Categoría"
+
+msgctxt "selection:notification.web.template,category:"
+msgid "Orders and Service"
+msgstr "Pedidos y servicio"
+
+msgctxt "selection:notification.web.template,category:"
+msgid "Promotions"
+msgstr "Promociones"
+
+msgctxt "selection:notification.web.template,category:"
+msgid "Cart Reminders"
+msgstr "Recordatorios de pedidos"
+
+msgctxt "field:notification.web.template,title:"
+msgid "Title"
+msgstr "Título"
+
+msgctxt "field:notification.web.template,body:"
+msgid "Message"
+msgstr "Mensaje"
+
+msgctxt "field:notification.web.template,path:"
+msgid "Application Link"
+msgstr "Enlace en la aplicación"
+
+msgctxt "field:notification.web.preference,application:"
+msgid "Application"
+msgstr "Aplicación"
+
+msgctxt "field:notification.web.preference,user:"
+msgid "User"
+msgstr "Usuario"
+
+msgctxt "field:notification.web.preference,service:"
+msgid "Order and Service Push"
+msgstr "Push de pedidos y servicio"
+
+msgctxt "field:notification.web.preference,promotion:"
+msgid "Promotions"
+msgstr "Promociones"
+
+msgctxt "field:notification.web.preference,reminder:"
+msgid "Cart Reminders"
+msgstr "Recordatorios de pedidos"
+
+msgctxt "field:notification.web.preference,changed_at:"
+msgid "Changed At"
+msgstr "Último cambio"
+
+msgctxt "field:notification.web.subscription,application:"
+msgid "Application"
+msgstr "Aplicación"
+
+msgctxt "field:notification.web.subscription,user:"
+msgid "User"
+msgstr "Usuario"
+
+msgctxt "field:notification.web.subscription,device:"
+msgid "Device"
+msgstr "Dispositivo"
+
+msgctxt "field:notification.web.subscription,endpoint:"
+msgid "Endpoint"
+msgstr "Dirección del servicio push"
+
+msgctxt "field:notification.web.subscription,endpoint_hash:"
+msgid "Endpoint Hash"
+msgstr "Huella de la dirección"
+
+msgctxt "field:notification.web.subscription,p256dh:"
+msgid "Public Key"
+msgstr "Clave pública"
+
+msgctxt "field:notification.web.subscription,auth:"
+msgid "Authentication Secret"
+msgstr "Secreto de autenticación"
+
+msgctxt "field:notification.web.scheduled_message,name:"
+msgid "Name"
+msgstr "Nombre"
+
+msgctxt "field:notification.web.scheduled_message,application:"
+msgid "Application"
+msgstr "Aplicación"
+
+msgctxt "field:notification.web.scheduled_message,template:"
+msgid "Template"
+msgstr "Plantilla"
+
+msgctxt "field:notification.web.scheduled_message,category:"
+msgid "Category"
+msgstr "Categoría"
+
+msgctxt "selection:notification.web.scheduled_message,category:"
+msgid "Orders and Service"
+msgstr "Pedidos y servicio"
+
+msgctxt "selection:notification.web.scheduled_message,category:"
+msgid "Promotions"
+msgstr "Promociones"
+
+msgctxt "selection:notification.web.scheduled_message,category:"
+msgid "Cart Reminders"
+msgstr "Recordatorios de pedidos"
+
+msgctxt "field:notification.web.scheduled_message,title:"
+msgid "Title"
+msgstr "Título"
+
+msgctxt "field:notification.web.scheduled_message,body:"
+msgid "Message"
+msgstr "Mensaje"
+
+msgctxt "field:notification.web.scheduled_message,path:"
+msgid "Application Link"
+msgstr "Enlace en la aplicación"
+
+msgctxt "field:notification.web.scheduled_message,users:"
+msgid "Recipients"
+msgstr "Destinatarios"
+
+msgctxt "field:notification.web.scheduled_message,scheduled_at:"
+msgid "Next Send At"
+msgstr "Próximo envío"
+
+msgctxt "field:notification.web.scheduled_message,test_user:"
+msgid "Test Recipient"
+msgstr "Destinatario de prueba"
+
+msgctxt "field:notification.web.scheduled_message,messages:"
+msgid "Messages"
+msgstr "Mensajes"
+
+msgctxt "field:notification.web.scheduled_message,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "selection:notification.web.scheduled_message,state:"
+msgid "Draft"
+msgstr "Borrador"
+
+msgctxt "selection:notification.web.scheduled_message,state:"
+msgid "Scheduled"
+msgstr "Programada"
+
+msgctxt "selection:notification.web.scheduled_message,state:"
+msgid "Dispatched"
+msgstr "Distribuida"
+
+msgctxt "selection:notification.web.scheduled_message,state:"
+msgid "Cancelled"
+msgstr "Cancelada"
+
+msgctxt "field:notification.web.scheduled_message.user,scheduled_message:"
+msgid "Scheduled Message"
+msgstr "Mensaje programado"
+
+msgctxt "field:notification.web.scheduled_message.user,user:"
+msgid "User"
+msgstr "Usuario"
+
+msgctxt "field:notification.web.message,application:"
+msgid "Application"
+msgstr "Aplicación"
+
+msgctxt "field:notification.web.message,user:"
+msgid "Recipient"
+msgstr "Destinatario"
+
+msgctxt "field:notification.web.message,scheduled_message:"
+msgid "Scheduled Message"
+msgstr "Mensaje programado"
+
+msgctxt "field:notification.web.message,category:"
+msgid "Category"
+msgstr "Categoría"
+
+msgctxt "selection:notification.web.message,category:"
+msgid "Orders and Service"
+msgstr "Pedidos y servicio"
+
+msgctxt "selection:notification.web.message,category:"
+msgid "Promotions"
+msgstr "Promociones"
+
+msgctxt "selection:notification.web.message,category:"
+msgid "Cart Reminders"
+msgstr "Recordatorios de pedidos"
+
+msgctxt "field:notification.web.message,title:"
+msgid "Title"
+msgstr "Título"
+
+msgctxt "field:notification.web.message,body:"
+msgid "Message"
+msgstr "Mensaje"
+
+msgctxt "field:notification.web.message,path:"
+msgid "Application Link"
+msgstr "Enlace en la aplicación"
+
+msgctxt "field:notification.web.message,read_at:"
+msgid "Read At"
+msgstr "Leído el"
+
+msgctxt "field:notification.web.message,expires_at:"
+msgid "Push Expires At"
+msgstr "Caducidad del push"
+
+msgctxt "field:notification.web.message,deliveries:"
+msgid "Push Deliveries"
+msgstr "Envíos push"
+
+msgctxt "field:notification.web.delivery,message:"
+msgid "Message"
+msgstr "Mensaje"
+
+msgctxt "field:notification.web.delivery,subscription:"
+msgid "Device"
+msgstr "Dispositivo"
+
+msgctxt "field:notification.web.delivery,state:"
+msgid "State"
+msgstr "Estado"
+
+msgctxt "selection:notification.web.delivery,state:"
+msgid "Pending"
+msgstr "Pendiente"
+
+msgctxt "selection:notification.web.delivery,state:"
+msgid "Accepted by Push Service"
+msgstr "Aceptado por el servicio push"
+
+msgctxt "selection:notification.web.delivery,state:"
+msgid "Failed"
+msgstr "Fallido"
+
+msgctxt "selection:notification.web.delivery,state:"
+msgid "Cancelled"
+msgstr "Cancelada"
+
+msgctxt "field:notification.web.delivery,attempts:"
+msgid "Attempts"
+msgstr "Intentos"
+
+msgctxt "field:notification.web.delivery,next_attempt:"
+msgid "Next Attempt"
+msgstr "Próximo intento"
+
+msgctxt "field:notification.web.delivery,accepted_at:"
+msgid "Accepted At"
+msgstr "Aceptado el"
+
+msgctxt "field:notification.web.delivery,error:"
+msgid "Error"
+msgstr "Error"
+
+msgctxt "model:res.group,name:group_notification"
+msgid "Notifications"
+msgstr "Notificaciones"
+
+msgctxt "model:ir.action.act_window,name:act_application"
+msgid "Applications"
+msgstr "Aplicaciones"
+
+msgctxt "model:ir.action.act_window,name:act_template"
+msgid "Templates"
+msgstr "Plantillas"
+
+msgctxt "model:ir.action.act_window,name:act_campaign"
+msgid "Scheduled Messages"
+msgstr "Mensajes programados"
+
+msgctxt "model:ir.action.act_window,name:act_preference"
+msgid "Preferences"
+msgstr "Preferencias"
+
+msgctxt "model:ir.action.act_window,name:act_subscription"
+msgid "Devices"
+msgstr "Dispositivos"
+
+msgctxt "model:ir.action.act_window,name:act_message"
+msgid "Inbox Messages"
+msgstr "Mensajes de la bandeja"
+
+msgctxt "model:ir.action.act_window,name:act_delivery"
+msgid "Push Deliveries"
+msgstr "Envíos push"
+
+msgctxt "model:ir.model.button,string:button_schedule"
+msgid "Schedule"
+msgstr "Programar / Enviar"
+
+msgctxt "model:ir.model.button,string:button_send_test"
+msgid "Send Test"
+msgstr "Enviar prueba"
+
+msgctxt "model:ir.model.button,string:button_cancel"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "model:ir.ui.menu,name:menu_notification"
+msgid "Notifications"
+msgstr "Notificaciones"
+
+msgctxt "view:notification.web.scheduled_message:"
+msgid "Schedule / Send"
+msgstr "Programar / Enviar"
+
+msgctxt "view:notification.web.scheduled_message:"
+msgid "Send Test"
+msgstr "Enviar prueba"
+
+msgctxt "view:notification.web.scheduled_message:"
+msgid "Cancel"
+msgstr "Cancelar"
+
+msgctxt "model:ir.ui.menu,name:menu_campaign"
+msgid "Scheduled Messages"
+msgstr "Mensajes programados"
+
+msgctxt "field:notification.web.scheduled_message,message_type:"
+msgid "Message Type"
+msgstr "Tipo de mensaje"
+
+msgctxt "field:notification.web.scheduled_message,frequency:"
+msgid "Frequency"
+msgstr "Frecuencia"
+
+msgctxt "field:notification.web.scheduled_message,send_time:"
+msgid "Local Sending Time"
+msgstr "Hora local de envío"
+
+msgctxt "field:notification.web.scheduled_message,timezone:"
+msgid "Time Zone"
+msgstr "Zona horaria"
+
+msgctxt "field:notification.web.scheduled_message,audience:"
+msgid "Audience"
+msgstr "Destinatarios"
+
+msgctxt "selection:notification.web.scheduled_message,frequency:"
+msgid "Once"
+msgstr "Una vez"
+
+msgctxt "selection:notification.web.scheduled_message,frequency:"
+msgid "Daily"
+msgstr "Diariamente"
+
+msgctxt "selection:notification.web.scheduled_message,audience:"
+msgid "Selected Recipients"
+msgstr "Destinatarios seleccionados"
+
+msgctxt "selection:notification.web.scheduled_message,audience:"
+msgid "All Application Customers"
+msgstr "Todos los clientes de la aplicación"
+
+msgctxt "selection:notification.web.scheduled_message,message_type:"
+msgid "Message"
+msgstr "Mensaje"
+
+msgctxt "selection:notification.web.scheduled_message,message_type:"
+msgid "Promotion"
+msgstr "Promoción"
+
+msgctxt "model:ir.ui.menu,name:menu_application"
+msgid "Applications"
+msgstr "Aplicaciones"
+
+msgctxt "model:ir.ui.menu,name:menu_template"
+msgid "Templates"
+msgstr "Plantillas"
+
+msgctxt "model:ir.ui.menu,name:menu_preference"
+msgid "Preferences"
+msgstr "Preferencias"
+
+msgctxt "model:ir.ui.menu,name:menu_subscription"
+msgid "Devices"
+msgstr "Dispositivos"
+
+msgctxt "model:ir.ui.menu,name:menu_message"
+msgid "Inbox Messages"
+msgstr "Mensajes de la bandeja"
+
+msgctxt "model:ir.ui.menu,name:menu_delivery"
+msgid "Push Deliveries"
+msgstr "Envíos push"
+
+msgctxt "model:notification.web.application,string:"
+msgid "Web Push Application"
+msgstr "Aplicación de notificaciones push"
+
+msgctxt "model:notification.web.template,string:"
+msgid "Notification Template"
+msgstr "Plantilla de notificación"
+
+msgctxt "model:notification.web.preference,string:"
+msgid "Notification Preferences"
+msgstr "Preferencias de notificaciones"
+
+msgctxt "model:notification.web.subscription,string:"
+msgid "Push Device Subscription"
+msgstr "Suscripción de dispositivo a notificaciones push"
+
+msgctxt "model:notification.web.scheduled_message,string:"
+msgid "Scheduled Message"
+msgstr "Mensaje programado"
+
+msgctxt "model:notification.web.scheduled_message.user,string:"
+msgid "Scheduled Message Recipient"
+msgstr "Destinatario del mensaje programado"
+
+msgctxt "model:notification.web.message,string:"
+msgid "Customer Inbox Message"
+msgstr "Mensaje de la bandeja del cliente"
+
+msgctxt "model:notification.web.delivery,string:"
+msgid "Push Delivery"
+msgstr "Envío push"
+
+msgctxt "help:notification.web.application,subject:"
+msgid "Contact URI, for example mailto:admin@example.com."
+msgstr "URI de contacto, por ejemplo mailto:admin@example.com."
+
+msgctxt "help:notification.web.template,body:"
+msgid "Placeholders: ${customer}, ${company}, ${reference}. Plain text."
+msgstr "Variables: ${customer}, ${company}, ${reference}. Texto sin formato."
+
+msgctxt "help:notification.web.template,path:"
+msgid "Relative to the application, e.g. sales. Leave blank for home."
+msgstr ""
+"Ruta relativa a la aplicación, por ejemplo sales. Dejar en blanco para ir al"
+" inicio."
+
+msgctxt "help:notification.web.scheduled_message,body:"
+msgid "Plain text. Placeholders: ${customer}, ${company}, ${reference}."
+msgstr "Texto sin formato. Variables: ${customer}, ${company}, ${reference}."
+
+msgctxt "help:notification.web.scheduled_message,timezone:"
+msgid "IANA time zone, for example Europe/Madrid."
+msgstr "Zona horaria IANA, por ejemplo Europe/Madrid."
+
+msgctxt "selection:ir.cron,method:"
+msgid "Dispatch Scheduled Web Messages"
+msgstr "Enviar mensajes web programados"
+
+msgctxt "selection:ir.cron,method:"
+msgid "Send Web Push Notifications"
+msgstr "Enviar notificaciones web push"
+
+msgctxt "model:ir.message,text:msg_unique"
+msgid "This notification record already exists."
+msgstr "Este registro de notificación ya existe."
+
+msgctxt "field:notification.web.application,active:"
+msgid "Active"
+msgstr "Activo"
+
+msgctxt "field:notification.web.template,active:"
+msgid "Active"
+msgstr "Activo"
+
+msgctxt "field:notification.web.subscription,active:"
+msgid "Active"
+msgstr "Activo"
+
+msgctxt "model:ir.rule.group,name:rule_application"
+msgid "Notification companies"
+msgstr "Empresas de las notificaciones"
+
+msgctxt "model:ir.rule.group,name:rule_campaign"
+msgid "Notification companies"
+msgstr "Empresas de las notificaciones"
+
+msgctxt "model:ir.rule.group,name:rule_preference"
+msgid "Notification companies"
+msgstr "Empresas de las notificaciones"
+
+msgctxt "model:ir.rule.group,name:rule_subscription"
+msgid "Notification companies"
+msgstr "Empresas de las notificaciones"
+
+msgctxt "model:ir.rule.group,name:rule_message"
+msgid "Notification companies"
+msgstr "Empresas de las notificaciones"
+
+msgctxt "model:ir.rule.group,name:rule_delivery"
+msgid "Notification companies"
+msgstr "Empresas de las notificaciones"
+
+msgctxt "model:ir.ui.menu,name:menu_configuration"
+msgid "Configuration"
+msgstr "Configuración"
+
+msgctxt "model:res.group,name:group_notification_configuration"
+msgid "Notifications - Configuration"
+msgstr "Notificaciones - Configuración"
+
+msgctxt "field:notification.web.subscription,device_type:"
+msgid "Device Type"
+msgstr "Tipo de dispositivo"
+
+msgctxt "field:notification.web.subscription,operating_system:"
+msgid "Operating System"
+msgstr "Sistema operativo"
+
+msgctxt "field:notification.web.subscription,browser:"
+msgid "Browser"
+msgstr "Navegador"
+
+msgctxt "field:notification.web.subscription,device_model:"
+msgid "Device Model"
+msgstr "Modelo del dispositivo"
+
+msgctxt "field:notification.web.subscription,reported_device_model:"
+msgid "Browser-Reported Device Model"
+msgstr "Modelo comunicado por el navegador"
+
+msgctxt "selection:notification.web.subscription,device_type:"
+msgid "Unknown"
+msgstr "Desconocido"
+
+msgctxt "selection:notification.web.subscription,device_type:"
+msgid "Mobile"
+msgstr "Móvil"
+
+msgctxt "selection:notification.web.subscription,device_type:"
+msgid "Tablet"
+msgstr "Tableta"
+
+msgctxt "selection:notification.web.subscription,device_type:"
+msgid "Computer"
+msgstr "Ordenador"
+
+msgctxt "field:notification.web.application,private_key_file:"
+msgid "VAPID Private Key"
+msgstr "Clave privada VAPID"
+
+msgctxt "field:notification.web.application,private_key_filename:"
+msgid "Private Key Filename"
+msgstr "Nombre del archivo de clave privada"
+
+msgctxt "help:notification.web.application,private_key_file:"
+msgid "Upload the unencrypted PEM file for the VAPID private key."
+msgstr "Suba el archivo PEM sin cifrar de la clave privada VAPID."
+
+msgctxt "model:ir.message,text:msg_invalid_vapid_private_key"
+msgid "Upload an unencrypted PEM private key using the P-256 elliptic curve."
+msgstr ""
+"Suba una clave privada PEM sin cifrar que utilice la curva elíptica P-256."
+
+msgctxt "model:ir.message,text:msg_vapid_key_mismatch"
+msgid "The uploaded private key does not match the VAPID public key."
+msgstr "La clave privada subida no coincide con la clave pública VAPID."
+
+msgctxt "field:notification.web.application,encrypted_private_key:"
+msgid "Encrypted VAPID Private Key"
+msgstr "Clave privada VAPID cifrada"
+
+msgctxt "model:ir.message,text:msg_vapid_encryption_key"
+msgid "Configure a valid [cryptography] fernet_key on the server to protect VAPID private keys."
+msgstr "Configure una clave fernet_key válida en [cryptography] del servidor para proteger las claves privadas VAPID."
+
+msgctxt "model:ir.message,text:msg_vapid_decryption"
+msgid "Unable to decrypt the VAPID private key. Check the server encryption key."
+msgstr "No se puede descifrar la clave privada VAPID. Compruebe la clave de cifrado del servidor."

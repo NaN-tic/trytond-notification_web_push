@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<form>
+    <label name="name" />
+    <field name="name" />
+    <label name="application" />
+    <field name="application" />
+    <label name="message_type"/><field name="message_type"/>
+    <label name="audience"/><field name="audience"/>
+    <label name="frequency"/><field name="frequency"/>
+    <label name="send_time"/><field name="send_time"/>
+    <label name="timezone"/><field name="timezone"/>
+    <newline/>
+    <label name="template" />
+    <field name="template" />
+    <label name="category" />
+    <field name="category" />
+    <label name="title" />
+    <field name="title" />
+    <newline/>
+    <label name="body" />
+    <field name="body" colspan="3" />
+    <newline/>
+    <label name="path" />
+    <field name="path" />
+    <label name="scheduled_at" />
+    <field name="scheduled_at" />
+    <group id="test_recipient" col="3" colspan="4">
+        <label name="test_user" />
+        <field name="test_user" />
+        <button name="send_test" string="Send Test" />
+    </group>
+    <notebook colspan="4">
+        <page name="users">
+            <field name="users" colspan="4" />
+        </page>
+    </notebook>
+    <label name="state" />
+    <field name="state" />
+    <group id="buttons" col="-1" colspan="2">
+        <button name="open_messages" string="Open Messages" />
+        <button name="cancel" string="Cancel" icon="tryton-cancel" />
+        <button name="schedule" string="Schedule / Send" icon="tryton-forward" />
+    </group>
+</form>

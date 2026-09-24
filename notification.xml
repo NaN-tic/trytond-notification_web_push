@@ -1,0 +1,606 @@
+<?xml version="1.0"?>
+<tryton>
+    <data>
+        <record model="res.group" id="group_notification">
+            <field name="name">Notifications</field>
+        </record>
+        <record model="res.group" id="group_notification_configuration">
+            <field name="name">Notifications - Configuration</field>
+            <field name="parent" ref="group_notification" />
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_notification_configuration">
+            <field name="user" ref="res.user_admin" />
+            <field name="group" ref="group_notification_configuration" />
+        </record>
+        <record model="res.user-res.group" id="user_admin_group_notification">
+            <field name="user" ref="res.user_admin" />
+            <field name="group" ref="group_notification" />
+        </record>
+        <record model="ir.message" id="msg_vapid_encryption_key">
+            <field name="text">Configure a valid [cryptography] fernet_key on the server to protect VAPID private keys.</field>
+        </record>
+        <record model="ir.message" id="msg_vapid_decryption">
+            <field name="text">Unable to decrypt the VAPID private key. Check the server encryption key.</field>
+        </record>
+        <record model="ir.message" id="msg_unique">
+            <field name="text">This notification record already exists.</field>
+        </record>
+        <record model="ir.message" id="msg_invalid_vapid_private_key">
+            <field name="text">Upload an unencrypted PEM private key using the P-256 elliptic curve.</field>
+        </record>
+        <record model="ir.message" id="msg_vapid_key_mismatch">
+            <field name="text">The uploaded private key does not match the VAPID public key.</field>
+        </record>
+        <menuitem name="Notifications" id="menu_notification" />
+        <record model="ir.ui.menu-res.group" id="menu_group">
+            <field name="menu" ref="menu_notification" />
+            <field name="group" ref="group_notification" />
+        </record>
+        <menuitem name="Configuration" parent="menu_notification" id="menu_configuration" />
+        <record model="ir.ui.menu-res.group" id="menu_configuration_group">
+            <field name="menu" ref="menu_configuration" />
+            <field name="group" ref="group_notification_configuration" />
+        </record>
+        <record model="ir.ui.view" id="application_form">
+            <field name="model">notification.web.application</field>
+            <field name="type">form</field>
+            <field name="name">application_form</field>
+        </record>
+        <record model="ir.ui.view" id="application_tree">
+            <field name="model">notification.web.application</field>
+            <field name="type">tree</field>
+            <field name="name">application_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_application">
+            <field name="name">Applications</field>
+            <field name="res_model">notification.web.application</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_application_tree">
+            <field name="sequence" eval="10" />
+            <field name="view" ref="application_tree" />
+            <field name="act_window" ref="act_application" />
+        </record>
+        <record model="ir.action.act_window.view" id="act_application_form">
+            <field name="sequence" eval="20" />
+            <field name="view" ref="application_form" />
+            <field name="act_window" ref="act_application" />
+        </record>
+        <menuitem parent="menu_configuration" action="act_application" id="menu_application" />
+        <record model="ir.model.access" id="access_application_default">
+            <field name="model">notification.web.application</field>
+            <field name="perm_read" eval="False" />
+            <field name="perm_write" eval="False" />
+            <field name="perm_create" eval="False" />
+            <field name="perm_delete" eval="False" />
+        </record>
+        <record model="ir.model.access" id="access_application_manager">
+            <field name="model">notification.web.application</field>
+            <field name="group" ref="group_notification" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="False" />
+            <field name="perm_create" eval="False" />
+            <field name="perm_delete" eval="False" />
+        </record>
+        <record model="ir.model.access" id="access_application_configuration">
+            <field name="model">notification.web.application</field>
+            <field name="group" ref="group_notification_configuration" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_delete" eval="True" />
+        </record>
+        <record model="ir.model.access" id="access_application_admin">
+            <field name="model">notification.web.application</field>
+            <field name="group" ref="res.group_admin" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_delete" eval="True" />
+        </record>
+        <record model="ir.model.field.access" id="access_application_private_key_file_default">
+            <field name="model">notification.web.application</field>
+            <field name="field">private_key_file</field>
+            <field name="perm_read" eval="False" />
+            <field name="perm_write" eval="False" />
+            <field name="perm_create" eval="False" />
+            <field name="perm_delete" eval="False" />
+        </record>
+        <record model="ir.model.field.access" id="access_application_private_key_file_configuration">
+            <field name="model">notification.web.application</field>
+            <field name="field">private_key_file</field>
+            <field name="group" ref="group_notification_configuration" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_delete" eval="True" />
+        </record>
+        <record model="ir.model.field.access" id="access_application_private_key_file_admin">
+            <field name="model">notification.web.application</field>
+            <field name="field">private_key_file</field>
+            <field name="group" ref="res.group_admin" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_delete" eval="True" />
+        </record>
+        <record model="ir.model.field.access" id="access_application_encrypted_private_key_default">
+            <field name="model">notification.web.application</field>
+            <field name="field">encrypted_private_key</field>
+            <field name="perm_read" eval="False" />
+            <field name="perm_write" eval="False" />
+            <field name="perm_create" eval="False" />
+            <field name="perm_delete" eval="False" />
+        </record>
+        <record model="ir.model.field.access" id="access_application_encrypted_private_key_configuration">
+            <field name="model">notification.web.application</field>
+            <field name="field">encrypted_private_key</field>
+            <field name="group" ref="group_notification_configuration" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_delete" eval="True" />
+        </record>
+        <record model="ir.model.field.access" id="access_application_encrypted_private_key_admin">
+            <field name="model">notification.web.application</field>
+            <field name="field">encrypted_private_key</field>
+            <field name="group" ref="res.group_admin" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_delete" eval="True" />
+        </record>
+        <record model="ir.model.field.access" id="access_application_private_key_filename_default">
+            <field name="model">notification.web.application</field>
+            <field name="field">private_key_filename</field>
+            <field name="perm_read" eval="False" />
+            <field name="perm_write" eval="False" />
+            <field name="perm_create" eval="False" />
+            <field name="perm_delete" eval="False" />
+        </record>
+        <record model="ir.model.field.access" id="access_application_private_key_filename_configuration">
+            <field name="model">notification.web.application</field>
+            <field name="field">private_key_filename</field>
+            <field name="group" ref="group_notification_configuration" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_delete" eval="True" />
+        </record>
+        <record model="ir.model.field.access" id="access_application_private_key_filename_admin">
+            <field name="model">notification.web.application</field>
+            <field name="field">private_key_filename</field>
+            <field name="group" ref="res.group_admin" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_delete" eval="True" />
+        </record>
+        <record model="ir.rule.group" id="rule_application">
+            <field name="name">Notification companies</field>
+            <field name="model">notification.web.application</field>
+            <field name="global_p" eval="True" />
+        </record>
+        <record model="ir.rule" id="rule_application_company">
+            <field name="rule_group" ref="rule_application" />
+            <field name="domain" eval="[('company', 'in', Eval('companies', []))]" pyson="1" />
+        </record>
+        <record model="ir.ui.view" id="template_form">
+            <field name="model">notification.web.template</field>
+            <field name="type">form</field>
+            <field name="name">template_form</field>
+        </record>
+        <record model="ir.ui.view" id="template_tree">
+            <field name="model">notification.web.template</field>
+            <field name="type">tree</field>
+            <field name="name">template_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_template">
+            <field name="name">Templates</field>
+            <field name="res_model">notification.web.template</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_template_tree">
+            <field name="sequence" eval="10" />
+            <field name="view" ref="template_tree" />
+            <field name="act_window" ref="act_template" />
+        </record>
+        <record model="ir.action.act_window.view" id="act_template_form">
+            <field name="sequence" eval="20" />
+            <field name="view" ref="template_form" />
+            <field name="act_window" ref="act_template" />
+        </record>
+        <menuitem parent="menu_configuration" action="act_template" id="menu_template" />
+        <record model="ir.model.access" id="access_template_default">
+            <field name="model">notification.web.template</field>
+            <field name="perm_read" eval="False" />
+            <field name="perm_write" eval="False" />
+            <field name="perm_create" eval="False" />
+            <field name="perm_delete" eval="False" />
+        </record>
+        <record model="ir.model.access" id="access_template_manager">
+            <field name="model">notification.web.template</field>
+            <field name="group" ref="group_notification" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="False" />
+            <field name="perm_create" eval="False" />
+            <field name="perm_delete" eval="False" />
+        </record>
+        <record model="ir.model.access" id="access_template_configuration">
+            <field name="model">notification.web.template</field>
+            <field name="group" ref="group_notification_configuration" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_delete" eval="True" />
+        </record>
+        <record model="ir.model.access" id="access_template_admin">
+            <field name="model">notification.web.template</field>
+            <field name="group" ref="res.group_admin" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_delete" eval="True" />
+        </record>
+        <record model="ir.ui.view" id="campaign_form">
+            <field name="model">notification.web.scheduled_message</field>
+            <field name="type">form</field>
+            <field name="name">scheduled_message_form</field>
+        </record>
+        <record model="ir.ui.view" id="campaign_tree">
+            <field name="model">notification.web.scheduled_message</field>
+            <field name="type">tree</field>
+            <field name="name">scheduled_message_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_campaign">
+            <field name="name">Scheduled Messages</field>
+            <field name="res_model">notification.web.scheduled_message</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_campaign_tree">
+            <field name="sequence" eval="10" />
+            <field name="view" ref="campaign_tree" />
+            <field name="act_window" ref="act_campaign" />
+        </record>
+        <record model="ir.action.act_window.view" id="act_campaign_form">
+            <field name="sequence" eval="20" />
+            <field name="view" ref="campaign_form" />
+            <field name="act_window" ref="act_campaign" />
+        </record>
+        <menuitem parent="menu_configuration" action="act_campaign" id="menu_campaign" />
+        <record model="ir.model.access" id="access_campaign_default">
+            <field name="model">notification.web.scheduled_message</field>
+            <field name="perm_read" eval="False" />
+            <field name="perm_write" eval="False" />
+            <field name="perm_create" eval="False" />
+            <field name="perm_delete" eval="False" />
+        </record>
+        <record model="ir.model.access" id="access_campaign_manager">
+            <field name="model">notification.web.scheduled_message</field>
+            <field name="group" ref="group_notification" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="False" />
+            <field name="perm_create" eval="False" />
+            <field name="perm_delete" eval="False" />
+        </record>
+        <record model="ir.model.access" id="access_campaign_configuration">
+            <field name="model">notification.web.scheduled_message</field>
+            <field name="group" ref="group_notification_configuration" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_delete" eval="True" />
+        </record>
+        <record model="ir.model.access" id="access_campaign_admin">
+            <field name="model">notification.web.scheduled_message</field>
+            <field name="group" ref="res.group_admin" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_delete" eval="True" />
+        </record>
+        <record model="ir.rule.group" id="rule_campaign">
+            <field name="name">Notification companies</field>
+            <field name="model">notification.web.scheduled_message</field>
+            <field name="global_p" eval="True" />
+        </record>
+        <record model="ir.rule" id="rule_campaign_company">
+            <field name="rule_group" ref="rule_campaign" />
+            <field name="domain" eval="[('application.company', 'in', Eval('companies', []))]" pyson="1" />
+        </record>
+        <record model="ir.ui.view" id="preference_form">
+            <field name="model">notification.web.preference</field>
+            <field name="type">form</field>
+            <field name="name">preference_form</field>
+        </record>
+        <record model="ir.ui.view" id="preference_tree">
+            <field name="model">notification.web.preference</field>
+            <field name="type">tree</field>
+            <field name="name">preference_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_preference">
+            <field name="name">Preferences</field>
+            <field name="res_model">notification.web.preference</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_preference_tree">
+            <field name="sequence" eval="10" />
+            <field name="view" ref="preference_tree" />
+            <field name="act_window" ref="act_preference" />
+        </record>
+        <record model="ir.action.act_window.view" id="act_preference_form">
+            <field name="sequence" eval="20" />
+            <field name="view" ref="preference_form" />
+            <field name="act_window" ref="act_preference" />
+        </record>
+        <menuitem parent="menu_notification" action="act_preference" id="menu_preference" />
+        <record model="ir.model.access" id="access_preference_default">
+            <field name="model">notification.web.preference</field>
+            <field name="perm_read" eval="False" />
+            <field name="perm_write" eval="False" />
+            <field name="perm_create" eval="False" />
+            <field name="perm_delete" eval="False" />
+        </record>
+        <record model="ir.model.access" id="access_preference_manager">
+            <field name="model">notification.web.preference</field>
+            <field name="group" ref="group_notification" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="False" />
+            <field name="perm_create" eval="False" />
+            <field name="perm_delete" eval="False" />
+        </record>
+        <record model="ir.model.access" id="access_preference_admin">
+            <field name="model">notification.web.preference</field>
+            <field name="group" ref="res.group_admin" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="False" />
+            <field name="perm_create" eval="False" />
+            <field name="perm_delete" eval="False" />
+        </record>
+        <record model="ir.rule.group" id="rule_preference">
+            <field name="name">Notification companies</field>
+            <field name="model">notification.web.preference</field>
+            <field name="global_p" eval="True" />
+        </record>
+        <record model="ir.rule" id="rule_preference_company">
+            <field name="rule_group" ref="rule_preference" />
+            <field name="domain" eval="[('application.company', 'in', Eval('companies', []))]" pyson="1" />
+        </record>
+        <record model="ir.ui.view" id="subscription_form">
+            <field name="model">notification.web.subscription</field>
+            <field name="type">form</field>
+            <field name="name">subscription_form</field>
+        </record>
+        <record model="ir.ui.view" id="subscription_tree">
+            <field name="model">notification.web.subscription</field>
+            <field name="type">tree</field>
+            <field name="name">subscription_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_subscription">
+            <field name="name">Devices</field>
+            <field name="res_model">notification.web.subscription</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_subscription_tree">
+            <field name="sequence" eval="10" />
+            <field name="view" ref="subscription_tree" />
+            <field name="act_window" ref="act_subscription" />
+        </record>
+        <record model="ir.action.act_window.view" id="act_subscription_form">
+            <field name="sequence" eval="20" />
+            <field name="view" ref="subscription_form" />
+            <field name="act_window" ref="act_subscription" />
+        </record>
+        <menuitem parent="menu_notification" action="act_subscription" id="menu_subscription" />
+        <record model="ir.model.access" id="access_subscription_default">
+            <field name="model">notification.web.subscription</field>
+            <field name="perm_read" eval="False" />
+            <field name="perm_write" eval="False" />
+            <field name="perm_create" eval="False" />
+            <field name="perm_delete" eval="False" />
+        </record>
+        <record model="ir.model.access" id="access_subscription_manager">
+            <field name="model">notification.web.subscription</field>
+            <field name="group" ref="group_notification" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="False" />
+            <field name="perm_create" eval="False" />
+            <field name="perm_delete" eval="False" />
+        </record>
+        <record model="ir.model.access" id="access_subscription_admin">
+            <field name="model">notification.web.subscription</field>
+            <field name="group" ref="res.group_admin" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="False" />
+            <field name="perm_create" eval="False" />
+            <field name="perm_delete" eval="False" />
+        </record>
+        <record model="ir.rule.group" id="rule_subscription">
+            <field name="name">Notification companies</field>
+            <field name="model">notification.web.subscription</field>
+            <field name="global_p" eval="True" />
+        </record>
+        <record model="ir.rule" id="rule_subscription_company">
+            <field name="rule_group" ref="rule_subscription" />
+            <field name="domain" eval="[('application.company', 'in', Eval('companies', []))]" pyson="1" />
+        </record>
+        <record model="ir.ui.view" id="message_form">
+            <field name="model">notification.web.message</field>
+            <field name="type">form</field>
+            <field name="name">message_form</field>
+        </record>
+        <record model="ir.ui.view" id="message_tree">
+            <field name="model">notification.web.message</field>
+            <field name="type">tree</field>
+            <field name="name">message_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_message">
+            <field name="name">Inbox Messages</field>
+            <field name="res_model">notification.web.message</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_message_tree">
+            <field name="sequence" eval="10" />
+            <field name="view" ref="message_tree" />
+            <field name="act_window" ref="act_message" />
+        </record>
+        <record model="ir.action.act_window.view" id="act_message_form">
+            <field name="sequence" eval="20" />
+            <field name="view" ref="message_form" />
+            <field name="act_window" ref="act_message" />
+        </record>
+        <menuitem parent="menu_notification" action="act_message" id="menu_message" />
+        <record model="ir.model.access" id="access_message_default">
+            <field name="model">notification.web.message</field>
+            <field name="perm_read" eval="False" />
+            <field name="perm_write" eval="False" />
+            <field name="perm_create" eval="False" />
+            <field name="perm_delete" eval="False" />
+        </record>
+        <record model="ir.model.access" id="access_message_manager">
+            <field name="model">notification.web.message</field>
+            <field name="group" ref="group_notification" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="False" />
+            <field name="perm_create" eval="False" />
+            <field name="perm_delete" eval="False" />
+        </record>
+        <record model="ir.model.access" id="access_message_admin">
+            <field name="model">notification.web.message</field>
+            <field name="group" ref="res.group_admin" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="False" />
+            <field name="perm_create" eval="False" />
+            <field name="perm_delete" eval="False" />
+        </record>
+        <record model="ir.rule.group" id="rule_message">
+            <field name="name">Notification companies</field>
+            <field name="model">notification.web.message</field>
+            <field name="global_p" eval="True" />
+        </record>
+        <record model="ir.rule" id="rule_message_company">
+            <field name="rule_group" ref="rule_message" />
+            <field name="domain" eval="[('application.company', 'in', Eval('companies', []))]" pyson="1" />
+        </record>
+        <record model="ir.ui.view" id="delivery_form">
+            <field name="model">notification.web.delivery</field>
+            <field name="type">form</field>
+            <field name="name">delivery_form</field>
+        </record>
+        <record model="ir.ui.view" id="delivery_tree">
+            <field name="model">notification.web.delivery</field>
+            <field name="type">tree</field>
+            <field name="name">delivery_tree</field>
+        </record>
+        <record model="ir.action.act_window" id="act_delivery">
+            <field name="name">Push Deliveries</field>
+            <field name="res_model">notification.web.delivery</field>
+        </record>
+        <record model="ir.action.act_window.view" id="act_delivery_tree">
+            <field name="sequence" eval="10" />
+            <field name="view" ref="delivery_tree" />
+            <field name="act_window" ref="act_delivery" />
+        </record>
+        <record model="ir.action.act_window.view" id="act_delivery_form">
+            <field name="sequence" eval="20" />
+            <field name="view" ref="delivery_form" />
+            <field name="act_window" ref="act_delivery" />
+        </record>
+        <menuitem parent="menu_notification" action="act_delivery" id="menu_delivery" />
+        <record model="ir.model.access" id="access_delivery_default">
+            <field name="model">notification.web.delivery</field>
+            <field name="perm_read" eval="False" />
+            <field name="perm_write" eval="False" />
+            <field name="perm_create" eval="False" />
+            <field name="perm_delete" eval="False" />
+        </record>
+        <record model="ir.model.access" id="access_delivery_manager">
+            <field name="model">notification.web.delivery</field>
+            <field name="group" ref="group_notification" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="False" />
+            <field name="perm_create" eval="False" />
+            <field name="perm_delete" eval="False" />
+        </record>
+        <record model="ir.model.access" id="access_delivery_admin">
+            <field name="model">notification.web.delivery</field>
+            <field name="group" ref="res.group_admin" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="False" />
+            <field name="perm_create" eval="False" />
+            <field name="perm_delete" eval="False" />
+        </record>
+        <record model="ir.rule.group" id="rule_delivery">
+            <field name="name">Notification companies</field>
+            <field name="model">notification.web.delivery</field>
+            <field name="global_p" eval="True" />
+        </record>
+        <record model="ir.rule" id="rule_delivery_company">
+            <field name="rule_group" ref="rule_delivery" />
+            <field name="domain" eval="[('message.application.company', 'in', Eval('companies', []))]" pyson="1" />
+        </record>
+        <record model="ir.model.button" id="button_schedule">
+            <field name="name">schedule</field>
+            <field name="model">notification.web.scheduled_message</field>
+            <field name="string">Schedule</field>
+        </record>
+        <record model="ir.model.button" id="button_open_messages">
+            <field name="name">open_messages</field>
+            <field name="model">notification.web.scheduled_message</field>
+            <field name="string">Open Messages</field>
+        </record>
+        <record model="ir.model.button-res.group" id="button_schedule_group">
+            <field name="button" ref="button_schedule" />
+            <field name="group" ref="group_notification_configuration" />
+        </record>
+        <record model="ir.model.button" id="button_send_test">
+            <field name="name">send_test</field>
+            <field name="model">notification.web.scheduled_message</field>
+            <field name="string">Send Test</field>
+        </record>
+        <record model="ir.model.button-res.group" id="button_send_test_group">
+            <field name="button" ref="button_send_test" />
+            <field name="group" ref="group_notification_configuration" />
+        </record>
+        <record model="ir.model.button" id="button_cancel">
+            <field name="name">cancel</field>
+            <field name="model">notification.web.scheduled_message</field>
+            <field name="string">Cancel</field>
+        </record>
+        <record model="ir.model.button-res.group" id="button_cancel_group">
+            <field name="button" ref="button_cancel" />
+            <field name="group" ref="group_notification_configuration" />
+        </record>
+        <record model="ir.model.access" id="access_campaign_user">
+            <field name="model">notification.web.scheduled_message.user</field>
+            <field name="perm_read" eval="False" />
+            <field name="perm_write" eval="False" />
+            <field name="perm_create" eval="False" />
+            <field name="perm_delete" eval="False" />
+        </record>
+        <record model="ir.model.access" id="access_campaign_user_manager">
+            <field name="model">notification.web.scheduled_message.user</field>
+            <field name="group" ref="group_notification" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="False" />
+            <field name="perm_create" eval="False" />
+            <field name="perm_delete" eval="False" />
+        </record>
+        <record model="ir.model.access" id="access_campaign_user_configuration">
+            <field name="model">notification.web.scheduled_message.user</field>
+            <field name="group" ref="group_notification_configuration" />
+            <field name="perm_read" eval="True" />
+            <field name="perm_write" eval="True" />
+            <field name="perm_create" eval="True" />
+            <field name="perm_delete" eval="True" />
+        </record>
+    </data>
+    <data noupdate="1">
+        <record model="ir.cron" id="cron_campaign">
+            <field name="method">notification.web.scheduled_message|dispatch_due</field>
+            <field name="interval_number" eval="1" />
+            <field name="interval_type">minutes</field>
+            <field name="active" eval="True" />
+        </record>
+        <record model="ir.cron" id="cron_delivery">
+            <field name="method">notification.web.delivery|enqueue_due</field>
+            <field name="interval_number" eval="1" />
+            <field name="interval_type">minutes</field>
+            <field name="active" eval="True" />
+        </record>
+    </data>
+</tryton>

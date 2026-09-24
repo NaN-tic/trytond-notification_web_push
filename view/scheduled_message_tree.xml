@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<tree>
+    <field name="name" />
+    <field name="application" />
+    <field name="message_type"/>
+    <field name="frequency"/>
+    <field name="send_time"/>
+    <field name="scheduled_at" widget="date" />
+    <field name="scheduled_at" widget="time" />
+    <field name="test_user" />
+    <field name="state" />
+</tree>

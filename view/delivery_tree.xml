@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<tree>
+    <field name="message" />
+    <field name="subscription" />
+    <field name="state" />
+    <field name="attempts" />
+    <field name="next_attempt" widget="date" />
+    <field name="next_attempt" widget="time" />
+    <field name="accepted_at" widget="date" />
+    <field name="accepted_at" widget="time" />
+    <field name="error" />
+</tree>

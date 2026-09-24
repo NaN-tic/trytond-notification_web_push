@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<form>
+    <label name="name" />
+    <field name="name" />
+    <label name="category" />
+    <field name="category" />
+    <label name="title" />
+    <field name="title" />
+    <label name="body" />
+    <field name="body" colspan="3" />
+    <label name="path" />
+    <field name="path" />
+    <label name="active" />
+    <field name="active" />
+</form>

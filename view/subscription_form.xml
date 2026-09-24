@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<form>
+    <label name="application" />
+    <field name="application" />
+    <label name="user" />
+    <field name="user" />
+    <label name="device" />
+    <field name="device" />
+    <label name="device_type" />
+    <field name="device_type" />
+    <label name="operating_system" />
+    <field name="operating_system" />
+    <label name="browser" />
+    <field name="browser" />
+    <label name="device_model" />
+    <field name="device_model" />
+    <label name="active" />
+    <field name="active" />
+</form>
