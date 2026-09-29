@@ -22,7 +22,7 @@ from trytond.model import (
     DeactivableMixin, Index, ModelSQL, ModelView, Unique, Workflow, fields)
 from trytond.pool import Pool, PoolMeta
 from trytond.pyson import Eval
-from trytond.transaction import Transaction
+from trytond.transaction import Transaction, without_check_access
 
 
 CATEGORIES = [
@@ -572,11 +572,13 @@ class ScheduledMessage(Workflow, ModelSQL, ModelView):
             scheduled_message.publish_messages()
             if scheduled_message.frequency == 'daily':
                 with Transaction().set_context(_notification_dispatch=True):
-                    cls.write([scheduled_message], {
-                        'scheduled_at': scheduled_message.next_daily_send(
-                            datetime.now())})
+                    with without_check_access():
+                        cls.write([scheduled_message], {
+                            'scheduled_at': scheduled_message.next_daily_send(
+                                datetime.now())})
             else:
-                cls.write([scheduled_message], {'state': 'sent'})
+                with without_check_access():
+                    cls.write([scheduled_message], {'state': 'sent'})
 
 
 class ScheduledMessageUser(ModelSQL):
@@ -601,7 +603,7 @@ class Message(ModelSQL, ModelView):
     title = fields.Char('Title', required=True, size=120)
     body = fields.Text('Message', required=True)
     path = fields.Char('Application Link')
-    read_at = fields.DateTime('Read At', readonly=True)
+    read_at = fields.DateTime('Read At', states={'editable': False})
     expires_at = fields.DateTime('Push Expires At', required=True)
     deliveries = fields.One2Many('notification.web.delivery', 'message',
         'Push Deliveries', readonly=True)
@@ -708,7 +710,8 @@ class Delivery(ModelSQL, ModelView):
             if (not subscription.active or subscription.user != message.user
                     or subscription.application != application
                     or not message.can_deliver()):
-                cls.write([delivery], {'state': 'cancelled'})
+                with without_check_access():
+                    cls.write([delivery], {'state': 'cancelled'})
                 continue
             if not application.push_enabled:
                 continue
@@ -753,7 +756,8 @@ class Delivery(ModelSQL, ModelView):
                 else:
                     values['next_attempt'] = datetime.now() + timedelta(
                         minutes=min(60, 2 ** attempts))
-            cls.write([delivery], values)
+            with without_check_access():
+                cls.write([delivery], values)
 
 
 class Cron(metaclass=PoolMeta):
