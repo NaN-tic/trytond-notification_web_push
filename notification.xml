@@ -8,14 +8,6 @@
             <field name="name">Notifications - Configuration</field>
             <field name="parent" ref="group_notification" />
         </record>
-        <record model="res.user-res.group" id="user_admin_group_notification_configuration">
-            <field name="user" ref="res.user_admin" />
-            <field name="group" ref="group_notification_configuration" />
-        </record>
-        <record model="res.user-res.group" id="user_admin_group_notification">
-            <field name="user" ref="res.user_admin" />
-            <field name="group" ref="group_notification" />
-        </record>
         <record model="ir.message" id="msg_vapid_encryption_key">
             <field name="text">Configure a valid [cryptography] fernet_key on the server to protect VAPID private keys.</field>
         </record>
@@ -89,14 +81,6 @@
             <field name="perm_create" eval="True" />
             <field name="perm_delete" eval="True" />
         </record>
-        <record model="ir.model.access" id="access_application_admin">
-            <field name="model">notification.web.application</field>
-            <field name="group" ref="res.group_admin" />
-            <field name="perm_read" eval="True" />
-            <field name="perm_write" eval="True" />
-            <field name="perm_create" eval="True" />
-            <field name="perm_delete" eval="True" />
-        </record>
         <record model="ir.model.field.access" id="access_application_private_key_file_default">
             <field name="model">notification.web.application</field>
             <field name="field">private_key_file</field>
@@ -109,15 +93,6 @@
             <field name="model">notification.web.application</field>
             <field name="field">private_key_file</field>
             <field name="group" ref="group_notification_configuration" />
-            <field name="perm_read" eval="True" />
-            <field name="perm_write" eval="True" />
-            <field name="perm_create" eval="True" />
-            <field name="perm_delete" eval="True" />
-        </record>
-        <record model="ir.model.field.access" id="access_application_private_key_file_admin">
-            <field name="model">notification.web.application</field>
-            <field name="field">private_key_file</field>
-            <field name="group" ref="res.group_admin" />
             <field name="perm_read" eval="True" />
             <field name="perm_write" eval="True" />
             <field name="perm_create" eval="True" />
@@ -140,15 +115,6 @@
             <field name="perm_create" eval="True" />
             <field name="perm_delete" eval="True" />
         </record>
-        <record model="ir.model.field.access" id="access_application_encrypted_private_key_admin">
-            <field name="model">notification.web.application</field>
-            <field name="field">encrypted_private_key</field>
-            <field name="group" ref="res.group_admin" />
-            <field name="perm_read" eval="True" />
-            <field name="perm_write" eval="True" />
-            <field name="perm_create" eval="True" />
-            <field name="perm_delete" eval="True" />
-        </record>
         <record model="ir.model.field.access" id="access_application_private_key_filename_default">
             <field name="model">notification.web.application</field>
             <field name="field">private_key_filename</field>
@@ -161,15 +127,6 @@
             <field name="model">notification.web.application</field>
             <field name="field">private_key_filename</field>
             <field name="group" ref="group_notification_configuration" />
-            <field name="perm_read" eval="True" />
-            <field name="perm_write" eval="True" />
-            <field name="perm_create" eval="True" />
-            <field name="perm_delete" eval="True" />
-        </record>
-        <record model="ir.model.field.access" id="access_application_private_key_filename_admin">
-            <field name="model">notification.web.application</field>
-            <field name="field">private_key_filename</field>
-            <field name="group" ref="res.group_admin" />
             <field name="perm_read" eval="True" />
             <field name="perm_write" eval="True" />
             <field name="perm_create" eval="True" />
@@ -232,14 +189,6 @@
             <field name="perm_create" eval="True" />
             <field name="perm_delete" eval="True" />
         </record>
-        <record model="ir.model.access" id="access_template_admin">
-            <field name="model">notification.web.template</field>
-            <field name="group" ref="res.group_admin" />
-            <field name="perm_read" eval="True" />
-            <field name="perm_write" eval="True" />
-            <field name="perm_create" eval="True" />
-            <field name="perm_delete" eval="True" />
-        </record>
         <record model="ir.ui.view" id="campaign_form">
             <field name="model">notification.web.scheduled_message</field>
             <field name="type">form</field>
@@ -283,14 +232,6 @@
         <record model="ir.model.access" id="access_campaign_configuration">
             <field name="model">notification.web.scheduled_message</field>
             <field name="group" ref="group_notification_configuration" />
-            <field name="perm_read" eval="True" />
-            <field name="perm_write" eval="True" />
-            <field name="perm_create" eval="True" />
-            <field name="perm_delete" eval="True" />
-        </record>
-        <record model="ir.model.access" id="access_campaign_admin">
-            <field name="model">notification.web.scheduled_message</field>
-            <field name="group" ref="res.group_admin" />
             <field name="perm_read" eval="True" />
             <field name="perm_write" eval="True" />
             <field name="perm_create" eval="True" />
@@ -345,14 +286,6 @@
             <field name="perm_create" eval="False" />
             <field name="perm_delete" eval="False" />
         </record>
-        <record model="ir.model.access" id="access_preference_admin">
-            <field name="model">notification.web.preference</field>
-            <field name="group" ref="res.group_admin" />
-            <field name="perm_read" eval="True" />
-            <field name="perm_write" eval="False" />
-            <field name="perm_create" eval="False" />
-            <field name="perm_delete" eval="False" />
-        </record>
         <record model="ir.rule.group" id="rule_preference">
             <field name="name">Notification companies</field>
             <field name="model">notification.web.preference</field>
@@ -397,14 +330,6 @@
         <record model="ir.model.access" id="access_subscription_manager">
             <field name="model">notification.web.subscription</field>
             <field name="group" ref="group_notification" />
-            <field name="perm_read" eval="True" />
-            <field name="perm_write" eval="False" />
-            <field name="perm_create" eval="False" />
-            <field name="perm_delete" eval="False" />
-        </record>
-        <record model="ir.model.access" id="access_subscription_admin">
-            <field name="model">notification.web.subscription</field>
-            <field name="group" ref="res.group_admin" />
             <field name="perm_read" eval="True" />
             <field name="perm_write" eval="False" />
             <field name="perm_create" eval="False" />
@@ -459,14 +384,6 @@
             <field name="perm_create" eval="False" />
             <field name="perm_delete" eval="False" />
         </record>
-        <record model="ir.model.access" id="access_message_admin">
-            <field name="model">notification.web.message</field>
-            <field name="group" ref="res.group_admin" />
-            <field name="perm_read" eval="True" />
-            <field name="perm_write" eval="False" />
-            <field name="perm_create" eval="False" />
-            <field name="perm_delete" eval="False" />
-        </record>
         <record model="ir.rule.group" id="rule_message">
             <field name="name">Notification companies</field>
             <field name="model">notification.web.message</field>
@@ -511,14 +428,6 @@
         <record model="ir.model.access" id="access_delivery_manager">
             <field name="model">notification.web.delivery</field>
             <field name="group" ref="group_notification" />
-            <field name="perm_read" eval="True" />
-            <field name="perm_write" eval="False" />
-            <field name="perm_create" eval="False" />
-            <field name="perm_delete" eval="False" />
-        </record>
-        <record model="ir.model.access" id="access_delivery_admin">
-            <field name="model">notification.web.delivery</field>
-            <field name="group" ref="res.group_admin" />
             <field name="perm_read" eval="True" />
             <field name="perm_write" eval="False" />
             <field name="perm_create" eval="False" />
