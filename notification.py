@@ -2,6 +2,7 @@ import base64
 import hashlib
 import json
 import re
+import traceback
 from datetime import datetime, timedelta, timezone
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 from string import Template as TextTemplate
@@ -667,6 +668,7 @@ class Delivery(ModelSQL, ModelView):
     next_attempt = fields.DateTime('Next Attempt', required=True, readonly=True)
     accepted_at = fields.DateTime('Accepted At', readonly=True)
     error = fields.Char('Error', readonly=True)
+    error_traceback = fields.Text('Error Traceback', readonly=True)
 
     @classmethod
     def __setup__(cls):
@@ -716,8 +718,9 @@ class Delivery(ModelSQL, ModelView):
             if not application.push_enabled:
                 continue
             attempts = delivery.attempts + 1
-            values = {'attempts': attempts}
+            values = {'attempts': attempts, 'error_traceback': None}
             status = None
+            error = None
             try:
                 validate_endpoint(subscription.endpoint)
                 with PushSession() as session:
@@ -736,26 +739,63 @@ class Delivery(ModelSQL, ModelView):
                         ttl=max(0, int((message.expires_at - datetime.now()).total_seconds())),
                         timeout=10, requests_session=session)
                     status = result.status_code
-            except WebPushException as exc:
-                if exc.response is not None:
+            except (WebPushException, requests.RequestException,
+                    ValueError, UserError) as exc:
+                if isinstance(exc, WebPushException) and exc.response is not None:
                     status = exc.response.status_code
-            except (requests.RequestException, ValueError, UserError):
-                pass
+                if isinstance(exc, requests.exceptions.SSLError):
+                    error = gettext('notification_web_push.msg_push_ssl')
+                elif isinstance(exc, requests.Timeout):
+                    error = gettext('notification_web_push.msg_push_timeout')
+                elif isinstance(exc, requests.ConnectionError):
+                    error = gettext('notification_web_push.msg_push_connection')
+                elif isinstance(exc, UserError):
+                    error = exc.message
+                elif isinstance(exc, ValueError):
+                    error = gettext('notification_web_push.msg_push_invalid_data')
+                else:
+                    error = gettext('notification_web_push.msg_push_request')
+                # Do not persist exception text, response bodies, source lines or
+                # locals: they may contain subscription URLs or private keys.
+                traces = []
+                seen = set()
+                cause = exc
+                while cause is not None and id(cause) not in seen:
+                    seen.add(id(cause))
+                    traces.append(type(cause).__name__)
+                    for frame in traceback.extract_tb(cause.__traceback__):
+                        traces.append('  File "%s", line %s, in %s' % (
+                            frame.filename, frame.lineno, frame.name))
+                    cause = (cause.__cause__ if cause.__cause__ is not None
+                        else cause.__context__ if not cause.__suppress_context__
+                        else None)
+                values['error_traceback'] = '\n'.join(traces)
             if status is not None and 200 <= status < 300:
                 values.update(state='accepted', accepted_at=datetime.now(), error=None)
             elif status in (404, 410):
                 Pool().get('notification.web.subscription').write(
                     [subscription], {'active': False})
-                values.update(state='failed', error='Subscription expired')
+                values.update(state='failed', error=gettext(
+                    'notification_web_push.msg_push_expired'))
             else:
-                values['error'] = ('HTTP %s' % status if status else
-                    'Push service or configuration error')
+                if status is not None:
+                    reason = {
+                        400: 'invalid_data', 401: 'authorization',
+                        403: 'authorization', 408: 'timeout', 413: 'too_large',
+                        429: 'rate_limit',
+                        }.get(status, 'unavailable' if status >= 500 else 'request')
+                    error = 'HTTP %s: %s' % (status, gettext(
+                        'notification_web_push.msg_push_' + reason))
+                values['error'] = error or gettext(
+                    'notification_web_push.msg_push_request')
                 if attempts >= 5 or (status is not None
                         and status < 500 and status not in (408, 429)):
                     values['state'] = 'failed'
                 else:
                     values['next_attempt'] = datetime.now() + timedelta(
                         minutes=min(60, 2 ** attempts))
+            if values['error_traceback']:
+                values['error_traceback'] += '\n' + (values.get('error') or '')
             with without_check_access():
                 cls.write([delivery], values)
 

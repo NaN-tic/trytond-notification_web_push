@@ -1,6 +1,36 @@
 <?xml version="1.0"?>
 <tryton>
     <data>
+        <record model="ir.message" id="msg_push_ssl">
+            <field name="text">The secure connection to the push service failed. Check the TLS certificate.</field>
+        </record>
+        <record model="ir.message" id="msg_push_timeout">
+            <field name="text">The push service timed out. Try again later.</field>
+        </record>
+        <record model="ir.message" id="msg_push_connection">
+            <field name="text">Unable to connect to the push service. Check DNS and network access.</field>
+        </record>
+        <record model="ir.message" id="msg_push_invalid_data">
+            <field name="text">Invalid push data. Check the VAPID configuration and device subscription.</field>
+        </record>
+        <record model="ir.message" id="msg_push_request">
+            <field name="text">The push request failed. Check the error traceback and push configuration.</field>
+        </record>
+        <record model="ir.message" id="msg_push_expired">
+            <field name="text">The device subscription has expired. Enable notifications again on the device.</field>
+        </record>
+        <record model="ir.message" id="msg_push_authorization">
+            <field name="text">The push service rejected authorization. Check the VAPID keys and contact.</field>
+        </record>
+        <record model="ir.message" id="msg_push_too_large">
+            <field name="text">The push message is too large. Reduce its content.</field>
+        </record>
+        <record model="ir.message" id="msg_push_rate_limit">
+            <field name="text">The push service rate limit was reached. Try again later.</field>
+        </record>
+        <record model="ir.message" id="msg_push_unavailable">
+            <field name="text">The push service is temporarily unavailable. Try again later.</field>
+        </record>
         <record model="res.group" id="group_notification">
             <field name="name">Notifications</field>
         </record>
