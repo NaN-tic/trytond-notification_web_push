@@ -616,3 +616,47 @@ msgstr "Configure una clave fernet_key válida en [cryptography] del servidor pa
 msgctxt "model:ir.message,text:msg_vapid_decryption"
 msgid "Unable to decrypt the VAPID private key. Check the server encryption key."
 msgstr "No se puede descifrar la clave privada VAPID. Compruebe la clave de cifrado del servidor."
+
+msgctxt "field:notification.web.delivery,error_traceback:"
+msgid "Error Traceback"
+msgstr "Traza del error"
+
+msgctxt "model:ir.message,text:msg_push_ssl"
+msgid "The secure connection to the push service failed. Check the TLS certificate."
+msgstr "Ha fallado la conexión segura con el servicio push. Compruebe el certificado TLS."
+
+msgctxt "model:ir.message,text:msg_push_timeout"
+msgid "The push service timed out. Try again later."
+msgstr "El servicio push ha superado el tiempo de espera. Inténtelo más tarde."
+
+msgctxt "model:ir.message,text:msg_push_connection"
+msgid "Unable to connect to the push service. Check DNS and network access."
+msgstr "No se puede conectar con el servicio push. Compruebe el DNS y el acceso a la red."
+
+msgctxt "model:ir.message,text:msg_push_invalid_data"
+msgid "Invalid push data. Check the VAPID configuration and device subscription."
+msgstr "Datos push incorrectos. Compruebe la configuración VAPID y la suscripción del dispositivo."
+
+msgctxt "model:ir.message,text:msg_push_request"
+msgid "The push request failed. Check the error traceback and push configuration."
+msgstr "Ha fallado la petición push. Consulte la traza del error y la configuración push."
+
+msgctxt "model:ir.message,text:msg_push_expired"
+msgid "The device subscription has expired. Enable notifications again on the device."
+msgstr "La suscripción del dispositivo ha caducado. Vuelva a activar las notificaciones en el dispositivo."
+
+msgctxt "model:ir.message,text:msg_push_authorization"
+msgid "The push service rejected authorization. Check the VAPID keys and contact."
+msgstr "El servicio push ha rechazado la autorización. Compruebe las claves VAPID y el contacto."
+
+msgctxt "model:ir.message,text:msg_push_too_large"
+msgid "The push message is too large. Reduce its content."
+msgstr "El mensaje push es demasiado grande. Reduzca su contenido."
+
+msgctxt "model:ir.message,text:msg_push_rate_limit"
+msgid "The push service rate limit was reached. Try again later."
+msgstr "Se ha alcanzado el límite de peticiones del servicio push. Inténtelo más tarde."
+
+msgctxt "model:ir.message,text:msg_push_unavailable"
+msgid "The push service is temporarily unavailable. Try again later."
+msgstr "El servicio push no está disponible temporalmente. Inténtelo más tarde."
