@@ -14,4 +14,6 @@
     <field name="accepted_at" />
     <label name="error" />
     <field name="error" />
+    <separator name="error_traceback" colspan="4" />
+    <field name="error_traceback" colspan="4" />
 </form>
